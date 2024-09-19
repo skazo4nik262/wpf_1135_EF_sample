@@ -1,36 +1,29 @@
-﻿<Window x:Class="wpf_1135_EF_sample.MainWindow"
+﻿<Window x:Class="wpf_1135_EF_sample.WinYellowPress"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:wpf_1135_EF_sample"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="WinYellowPress" Height="450" Width="800">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="350"/>
             <RowDefinition />
         </Grid.RowDefinitions>
-        <Menu>
-            <MenuItem Header="Исполнитель">
-                <MenuItem Header="Добавить" Click="OpenNewSingerEditor"/>
-                <MenuItem Header="Изменить" Click="OpenSingerEditor"/>
-            </MenuItem>
-           <MenuItem Header="Сокровенные тайны" Click="OpenYP"/>
-        </Menu>
-        <ListView ItemsSource="{Binding Singers}" SelectedItem="{Binding SelectedSinger}" Grid.Row="1">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        
+        <ListView ItemsSource="{Binding Singers}" SelectedItem="{Binding SelectedSinger}" Grid.Row="0" Grid.ColumnSpan="2">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Имя" DisplayMemberBinding="{Binding Firstname}"/>
                     <GridViewColumn Header="Фамилия" DisplayMemberBinding="{Binding Lastname}"/>
-                    <GridViewColumn>
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <ItemsControl DisplayMemberPath="Title" ItemsSource="{Binding Musics}"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                    <GridViewColumn>
+                    
+                    <GridViewColumn Header="Сомнительная статья">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <ItemsControl DisplayMemberPath="TitleArticle" ItemsSource="{Binding YellowPresses}"/>
@@ -40,5 +33,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
+
+        <Button Content="Удалить эту ложь!" Margin="20" Height="Auto" Width="Auto" Click="DelYP" Grid.Row="1"/>
     </Grid>
 </Window>

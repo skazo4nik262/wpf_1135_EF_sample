@@ -79,6 +79,11 @@ namespace wpf_1135_EF_sample
             new WinSingerEditor(SelectedSinger).ShowDialog();
             UpdateList();
         }
+
+        private void OpenYP(object sender, RoutedEventArgs e)
+        {
+            new WinYellowPress().ShowDialog();
+        }
     }
 }
 
