@@ -18,7 +18,7 @@
             </MenuItem>
            <MenuItem Header="Сокровенные тайны" Click="OpenYP"/>
         </Menu>
-        <ListView ItemsSource="{Binding Singers}" SelectedItem="{Binding SelectedSinger}" Grid.Row="1">
+        <ListView ItemsSource="{Binding Singers}" SelectedItem="{Binding SelectedSinger}" Grid.Row="1" MouseDoubleClick="AddYP">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Имя" DisplayMemberBinding="{Binding Firstname}"/>

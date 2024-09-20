@@ -19,8 +19,19 @@ namespace wpf_1135_EF_sample
                 Signal();
             }
         }
+        private List<YellowPress> yps;
 
-        public Singer SelectedSinger { get; set; }
+        public List<YellowPress> Yps
+        {
+            get => yps;
+            set
+            {
+                yps = value;
+                Signal();
+            }
+        }
+
+        public YellowPress SelectedYP { get; set; }
 
         public WinYellowPress()
         {
@@ -39,28 +50,44 @@ namespace wpf_1135_EF_sample
         void Signal([CallerMemberName] string prop = null)
             => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
 
+        private _1135New2024Context db = new();
+
         private void UpdateList()
         {
-            using (var db = new _1135New2024Context())
-            {
-                Singers = db.Singers.
-                    Include(s => s.YellowPresses).
-                    ToList();
-            }
+            Singers = db.Singers.
+                Include(s => s.YellowPresses).
+                ToList();
+
+            Yps = db.YellowPresses.ToList();
         }
 
         private void DelYP(object sender, RoutedEventArgs e)
         {
-            switch (MessageBox.Show("Удалить?", "Предупреждение!!", MessageBoxButton.YesNo))
+            if (SelectedYP != null)
             {
-                case MessageBoxResult.Yes:
-                    break;
+                switch (MessageBox.Show("Удалить?", "Предупреждение!!", MessageBoxButton.YesNo))
+                {
+                    case MessageBoxResult.Yes:
+                        Yps = db.YellowPresses.ToList();
+                        db.YellowPresses.Remove(SelectedYP);
+                        db.SaveChanges();
+                        UpdateList();
+                        break;
 
-                case MessageBoxResult.No:
-                    MessageBox.Show("Действие отменено!");
-                    break;
+                    case MessageBoxResult.No:
+                        MessageBox.Show("Действие отменено!");
+                        break;
+                }
             }
+        }
 
+        private void YTFull(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            if (SelectedYP == null)
+                return;
+
+            new WinYellowPressFull(SelectedYP).ShowDialog();
+            UpdateList();
         }
     }
 }

@@ -1,6 +1,9 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -14,14 +17,29 @@ using System.Windows.Shapes;
 
 namespace wpf_1135_EF_sample
 {
-    /// <summary>
-    /// Логика взаимодействия для WinYellowPressFull.xaml
-    /// </summary>
-    public partial class WinYellowPressFull : Window
+    public partial class WinYellowPressFull : Window, INotifyPropertyChanged
     {
-        public WinYellowPressFull()
+        public YellowPress YP
+        {
+            get => yellowPress;
+            set
+            {
+                yellowPress = value;
+                Signal();
+            }
+        }
+        public YellowPress yellowPress;
+
+        public WinYellowPressFull(YellowPress yp)
         {
             InitializeComponent();
+            YP = yp;
+            DataContext = this;
         }
+
+        void Signal([CallerMemberName] string prop = null)
+            => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
+
+        public event PropertyChangedEventHandler? PropertyChanged;
     }
 }

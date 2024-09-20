@@ -16,20 +16,12 @@
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        
-        <ListView ItemsSource="{Binding Singers}" SelectedItem="{Binding SelectedSinger}" Grid.Row="0" Grid.ColumnSpan="2">
+
+        <ListView ItemsSource="{Binding Yps}" SelectedItem="{Binding SelectedYP}" Grid.Row="0" Grid.ColumnSpan="2" MouseDoubleClick="YTFull">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Имя" DisplayMemberBinding="{Binding Firstname}"/>
-                    <GridViewColumn Header="Фамилия" DisplayMemberBinding="{Binding Lastname}"/>
-                    
-                    <GridViewColumn Header="Сомнительная статья">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <ItemsControl DisplayMemberPath="TitleArticle" ItemsSource="{Binding YellowPresses}"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
+                    <GridViewColumn Header="Название" DisplayMemberBinding="{Binding TitleArticle}"/>
+                    <GridViewColumn Header="Айди певца" DisplayMemberBinding="{Binding IdSinger}"/>
                 </GridView>
             </ListView.View>
         </ListView>

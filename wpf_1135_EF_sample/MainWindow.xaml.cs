@@ -84,6 +84,11 @@ namespace wpf_1135_EF_sample
         {
             new WinYellowPress().ShowDialog();
         }
+
+        private void AddYP(object sender, MouseButtonEventArgs e)
+        {
+            new YellowPressAdd(SelectedSinger).ShowDialog();
+        }
     }
 }
 
