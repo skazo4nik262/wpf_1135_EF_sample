@@ -6,7 +6,7 @@ namespace wpf_1135_EF_sample;
 public partial class Music
 {
     public int Id { get; set; }
-
+    
     public string? Title { get; set; }
 
     public int IdSinger { get; set; }
