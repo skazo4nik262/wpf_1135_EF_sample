@@ -6,16 +6,13 @@
         xmlns:local="clr-namespace:wpf_1135_EF_sample"
         mc:Ignorable="d"
         Title="WinYellowPress" Height="450" Width="800">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="350"/>
-            <RowDefinition />
-        </Grid.RowDefinitions>
 
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
+    <StackPanel Orientation="Vertical">
+
+        <StackPanel Orientation="Horizontal">
+            <Button Content="Поиск" Click="Search"/>
+            <TextBox Text="{Binding Src}" Width="700"/>
+        </StackPanel>
 
         <ListView ItemsSource="{Binding Yps}" SelectedItem="{Binding SelectedYP}" Grid.Row="0" Grid.ColumnSpan="2" MouseDoubleClick="YTFull">
             <ListView.View>
@@ -27,5 +24,5 @@
         </ListView>
 
         <Button Content="Удалить эту ложь!" Margin="20" Height="Auto" Width="Auto" Click="DelYP" Grid.Row="1"/>
-    </Grid>
+    </StackPanel>
 </Window>

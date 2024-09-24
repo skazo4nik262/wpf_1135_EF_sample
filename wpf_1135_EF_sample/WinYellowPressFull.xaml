@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Title="WinYellowPressFull" Height="450" Width="800">
     <StackPanel Orientation="Vertical">
+        
         <StackPanel Orientation="Horizontal">
             <Label Content="Кликбейт заголовок: " VerticalContentAlignment="Top"/>
             <TextBlock Text="{Binding YP.TitleArticle}"/>

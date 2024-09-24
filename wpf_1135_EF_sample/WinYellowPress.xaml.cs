@@ -89,5 +89,22 @@ namespace wpf_1135_EF_sample
             new WinYellowPressFull(SelectedYP).ShowDialog();
             UpdateList();
         }
+
+
+        public string src;
+        public string Src
+        {
+            get => src;
+            set
+            {
+                src = value;
+                Signal();
+            }
+        }
+
+        private void Search(object sender, RoutedEventArgs e)
+        {
+            Yps = db.YellowPresses.Where(s => s.Description.Contains(src) || s.TitleArticle.Contains(src)).ToList();
+        }
     }
 }
