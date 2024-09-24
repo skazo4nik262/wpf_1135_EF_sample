@@ -9,17 +9,17 @@
     <StackPanel Orientation="Vertical">
         <StackPanel Orientation="Horizontal">
             <Label Content="Кликбейт заголовок: " VerticalContentAlignment="Top"/>
-            <TextBlock Text="{Binding YP.TitleArticle}"/>
+            <TextBox x:Name="Zag" Width="650" Text="{Binding YP.TitleArticle}"/>
         </StackPanel>
 
         <StackPanel Orientation="Horizontal">
             <Label Content="Треш-статья: " VerticalContentAlignment="Top"/>
-            <TextBlock Text="{Binding YP.Description}"/>
+            <TextBox x:Name="Des" Width="650" Text=""/>
         </StackPanel>
 
         <StackPanel Orientation="Horizontal">
             <Label Content="Айди жертвы: " VerticalContentAlignment="Top"/>
-            <TextBlock Text="{Binding YP.IdSinger}"/>
+            <TextBox x:Name="Ids" Width="650" Text=""/>
         </StackPanel>
 
         <Button Content="Назад" Margin="20, 20, 680, 10" Click="SaveAnBack"/>
